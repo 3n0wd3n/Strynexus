@@ -1,2 +1,2 @@
 # Strynexus
-Messing up with strings
+Messing up with strings and AI
