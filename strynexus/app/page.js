@@ -5,13 +5,24 @@ import { NewStrnxsContainer, SendContainer, Button, InputContainer, MainContaine
 export default function Home() {
   const [mode, setMode] = useState("");
   const [strnxs, setStrnxs] = useState("");
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(null);
   const [colorButton, setColorButton] = useState(null);
   const [newStrnxs, setNewStrnxs] = useState("");
+  const [delteKey, setDelteKey] = useState(false);
 
   // useEffect(() => {
-  //   console.log(mode)
+    
   // });
+
+  function handleKeyDown(event) {
+    console.log("tt")
+    if (event.key === "Delete") {
+      setDelteKey(true)
+    }
+    else{
+      setDelteKey(false)
+    }
+  }
 
   function disemVowel(strnxs) {
     var newStr = "";
@@ -76,7 +87,7 @@ export default function Home() {
       </UlContainer>
       <SendContainer>
         {counter}/140
-        <InputContainer type="text" name="strnxsName" maxlength="140" onChange={({ target }) => (setStrnxs(target.value), setCounter(Math.abs(strnxs.length - 1)))}/>
+        <InputContainer type="text" name="strnxsName" maxLength={140} onKeyDown={handleKeyDown} onChange={({ target }) => (setStrnxs(target.value),  {delteKey} ? setCounter(strnxs.length + 1) : setCounter(strnxs.length - 1) )}/>
         <Button onClick={() => executeFunction(strnxs)}>proceed</Button>
       </SendContainer>
       {
