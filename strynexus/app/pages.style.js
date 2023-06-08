@@ -66,9 +66,12 @@ export const LiContainer = styled.li`
   border: 1px solid gray;
   border-radius: 15px;
   cursor: pointer;
-  transition: 1s;
+  transition: 0.6s;
+  background-color: ${({ editable }) => editable ? "#4D9078" : "white"};
+  color: ${({ editable }) => editable ? "white" : "black"};
   &:hover {
-    color: #4D9078;
+    // transform: scale(.98);
+    box-shadow: -2px 2px 3px  rgba(155, 155, 155, 0.35);
   }
   @media (max-width: 1000px) {
     padding: 10px 80px 10px 80px;
@@ -77,15 +80,17 @@ export const LiContainer = styled.li`
 
 export const InputContainer = styled.input`
   all: unset;
-  border: 1px solid gray;
+  border: 0px solid gray;
   border-radius: 15px;
   width: 100%;
-  padding: 10px 10px 10px 10px;
+  padding: 15px 10px 15px 10px;
+  box-shadow: -2px 2px 3px  rgba(155, 155, 155, 0.30);
 `;
 
 export const Button = styled.div`
   padding: 15px 20px 15px 20px;
-  border: 1px solid #4D9078;
+  border: 0px solid #4D9078;
+  box-shadow: -2px 2px 3px rgba(155, 155, 155, 0.30);
   font-weigth: 400;
   border-radius: 15px;
   background-color: white;

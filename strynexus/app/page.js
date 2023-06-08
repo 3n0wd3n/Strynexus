@@ -5,6 +5,8 @@ import { NewStrnxsContainer, SendContainer, Button, InputContainer, MainContaine
 export default function Home() {
   const [mode, setMode] = useState("");
   const [strnxs, setStrnxs] = useState("");
+  const [counter, setCounter] = useState(0);
+  const [colorButton, setColorButton] = useState(null);
   const [newStrnxs, setNewStrnxs] = useState("");
 
   // useEffect(() => {
@@ -67,14 +69,14 @@ export default function Home() {
       <H1Container>Improve you text skills using <span>STRYNEXUS</span></H1Container>
       <PContainer>Unlock Efficiency and Enhance Content Creation with Simple Tools Powered by Algorithms and AI</PContainer>
       <UlContainer>
-        <LiContainer onClick={() => setMode("HashTag")}>Add HashTag</LiContainer>
-        <LiContainer onClick={() => setMode("RemoVowe")}>Remove vowels</LiContainer>
-        <LiContainer onClick={() => setMode("ShorText")}>Shorten text</LiContainer>
-        <LiContainer onClick={() => setMode("MakePrit")}>Make it prettier</LiContainer>
+        <LiContainer editable={colorButton == 1} onClick={() => (setMode("HashTag"), setColorButton(1))}>Add HashTag</LiContainer>
+        <LiContainer editable={colorButton == 2} onClick={() => (setMode("RemoVowe"), setColorButton(2))}>Remove vowels</LiContainer>
+        <LiContainer editable={colorButton == 3} onClick={() => (setMode("ShorText"), setColorButton(3))}>Shorten text</LiContainer>
+        <LiContainer editable={colorButton == 4} onClick={() => (setMode("MakePrit"), setColorButton(4))}>Make it prettier</LiContainer>
       </UlContainer>
       <SendContainer>
-        <span>Mode:</span><span>{mode}</span>
-        <InputContainer type="text" name="strnxsName" maxlength="140" onChange={({ target }) => setStrnxs(target.value)}/>
+        {counter}/140
+        <InputContainer type="text" name="strnxsName" maxlength="140" onChange={({ target }) => (setStrnxs(target.value), setCounter(Math.abs(strnxs.length - 1)))}/>
         <Button onClick={() => executeFunction(strnxs)}>proceed</Button>
       </SendContainer>
       {
