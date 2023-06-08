@@ -15,11 +15,12 @@ export default function Home() {
   // });
 
   function handleKeyDown(event) {
-    console.log("tt")
     if (event.key === "Delete") {
+      console.log("t")
       setDelteKey(true)
     }
     else{
+      console.log("f")
       setDelteKey(false)
     }
   }
@@ -87,7 +88,7 @@ export default function Home() {
       </UlContainer>
       <SendContainer>
         {counter}/140
-        <InputContainer type="text" name="strnxsName" maxLength={140} onKeyDown={handleKeyDown} onChange={({ target }) => (setStrnxs(target.value),  {delteKey} ? setCounter(strnxs.length + 1) : setCounter(strnxs.length - 1) )}/>
+        <InputContainer type="text" name="strnxsName" maxLength={140} onKeyDown={handleKeyDown} onChange={({ target }) => (setStrnxs(target.value),  {delteKey} == false ? setCounter(strnxs.length + 20) : setCounter(strnxs.length - 1))}/>
         <Button onClick={() => executeFunction(strnxs)}>proceed</Button>
       </SendContainer>
       {
